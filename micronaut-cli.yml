@@ -1,0 +1,5 @@
+profile: service
+defaultPackage: realworld.api.micronaut
+---
+testFramework: junit
+sourceLanguage: java
