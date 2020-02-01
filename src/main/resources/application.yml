@@ -1,3 +1,19 @@
 micronaut:
   application:
     name: realworld-api-micronaut
+
+---
+datasources:
+  default:
+    url: ${JDBC_URL:`jdbc:h2:mem:default;DB_CLOSE_ON_EXIT=FALSE`}
+    driverClassName: ${JDBC_DRIVER:org.h2.Driver}
+    username: ${JDBC_USER:sa}
+    password: ${JDBC_PASS:''}
+
+jpa:
+  default:
+    properties:
+      hibernate:
+        hbm2ddl:
+          auto: update
+        show_sql: true
