@@ -14,10 +14,11 @@ public class UserEntity {
     @Id
     @GeneratedValue(generator = "UUID")
     private UUID id;
-
     @NotNull
     String email;
-
     @NotNull
     String hashedPassword;
+    String username;
+    String bio;
+    String image;
 }

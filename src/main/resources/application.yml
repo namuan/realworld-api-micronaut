@@ -1,7 +1,16 @@
 micronaut:
   application:
     name: realworld-api-micronaut
-
+  security:
+    enabled: true
+    token:
+      jwt:
+        enabled: true
+        signatures:
+          secret:
+            generator:
+              secret: ${JWT_SECRET_GENERATOR:pleaseRemoveThisLaterBecauseReasons}
+              jws-algorithm: HS256
 ---
 datasources:
   default:
