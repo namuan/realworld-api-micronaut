@@ -1,5 +1,7 @@
 package realworld.api.micronaut.auth;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,7 +15,9 @@ public class UserResponse {
         private String email;
         private String username;
         private String token;
+        @JsonInclude
         private String bio;
+        @JsonInclude
         private String image;
     }
 }

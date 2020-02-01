@@ -1,12 +1,15 @@
 package realworld.api.micronaut.auth;
 
+import io.micronaut.http.HttpResponse;
 import io.micronaut.http.MediaType;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Post;
+import io.micronaut.security.annotation.Secured;
+import io.micronaut.security.rules.SecurityRule;
 
 import javax.validation.Valid;
 
-@Controller
+@Controller("/api/users")
 public class AuthController {
     private AuthService authService;
 
@@ -14,8 +17,9 @@ public class AuthController {
         this.authService = authService;
     }
 
+    @Secured(SecurityRule.IS_ANONYMOUS)
     @Post(consumes = MediaType.APPLICATION_JSON, produces = MediaType.APPLICATION_JSON)
-    public UserResponse createUser(@Valid UserRequest userRequest) {
-        return this.authService.registerUser(userRequest);
+    public HttpResponse<UserResponse> createUser(@Valid UserRequest userRequest) {
+        return HttpResponse.created(this.authService.registerUser(userRequest));
     }
 }
